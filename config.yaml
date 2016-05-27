@@ -29,6 +29,10 @@ use_ssl: True
 #es_username: someusername
 #es_password: somepassword
 
+ca_certs: /etc/ssl/certs/ca-bundle.crt
+client_cert: /etc/ssl/client.crt
+client_key: /etc/ssl/client.key
+
 # The index on es_host which is used for metadata storage
 # This can be a unmapped index, but it is recommended that you run
 # elastalert-create-index to set a mapping
