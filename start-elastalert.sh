@@ -42,6 +42,9 @@ do
     > config 
     cat config > $file
     rm config
+    echo "Config File: $file"
+    echo "------------------"
+    cat $file
 done
 
 echo "Check if elasticsearch is reachable: '$elasticsearch_url'"
@@ -54,7 +57,7 @@ done
 # Check if the Elastalert index exists in Elasticsearch and create it if it does not.
 if ! $($CURL $elasticsearch_url/elastalert_status); then
   echo "Creating Elastalert index in Elasticsearch..."
-  elastalert-create-index --index elastalert_status --old-index ""
+  elastalert-create-index --index elastalert_status --old-index "" --es_debug --debug
 else
   echo "Elastalert index already exists in Elasticsearch."
 fi
