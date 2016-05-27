@@ -45,10 +45,10 @@ do
     > config 
     cat config > $file
     rm config
-    echo "Config File: $file"
-    echo "------------------"
-    cat $file
 done
+echo "-- config.yaml --"
+cat config.yaml
+echo
 
 echo "Check if elasticsearch is reachable: '$elasticsearch_url'"
 # Wait until Elasticsearch is online since otherwise Elastalert will fail.
