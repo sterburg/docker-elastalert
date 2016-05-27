@@ -57,7 +57,7 @@ done
 # Check if the Elastalert index exists in Elasticsearch and create it if it does not.
 if ! $($CURL $elasticsearch_url/elastalert_status); then
   echo "Creating Elastalert index in Elasticsearch..."
-  elastalert-create-index --index elastalert_status --old-index "" --es_debug --debug
+  elastalert-create-index --index elastalert_status --old-index ""
 else
   echo "Elastalert index already exists in Elasticsearch."
 fi
