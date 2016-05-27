@@ -24,6 +24,7 @@ es_port: 14900
 
 # Connect with SSL to elasticsearch
 use_ssl: True
+verify_ssl: False
 
 # Option basic-auth username and password for elasticsearch
 #es_username: someusername
