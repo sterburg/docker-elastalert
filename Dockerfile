@@ -5,10 +5,13 @@ MAINTAINER Innovation Platform Team "invcldtm@nordstrom.com"
 # Elastalert home directory full path.
 ENV ELASTALERT_HOME /opt/elastalert
 # Elastalert rules directory.
-ENV RULES_DIRECTORY rules
+ENV RULES_DIRECTORY /rules
 # Elastalert configuration file path in configuration directory.
 ENV ELASTALERT_CONFIG ${ELASTALERT_HOME}/config.yaml
-
+# Elasticsearch address (defaults to openshift EFK-stack)
+ENV ELASTICSEARCH_HOST logging-es.logging
+ENV ELASTICSEARCH_PORT 9200
+ENV USE_SSL true
 
 # Install curl
 RUN apt-get update -y \

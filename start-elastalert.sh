@@ -22,7 +22,7 @@ fi
 
 if [ -n "${ELASTICSEARCH_CLIENT_CERT}" ]; then
   cat ${ELASTICSEARCH_CLIENT_KEY} ${ELASTICSEARCH_CLIENT_CERT} >/etc/ssl/client.pem
-  CURL="${CURL} -cert /etc/ssl/client.pem"
+  CURL="${CURL} --cert /etc/ssl/client.pem"
 fi
 
 if [ -n "${ELASTICSEARCH_CA_CERTS}" ]; then
