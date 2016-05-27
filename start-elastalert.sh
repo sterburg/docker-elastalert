@@ -24,6 +24,7 @@ fi
 if [ -n "${ELASTICSEARCH_CLIENT_CERT}" ]; then
   cat ${ELASTICSEARCH_CLIENT_KEY} ${ELASTICSEARCH_CLIENT_CERT} >/etc/ssl/client.pem
   CURL="${CURL} --cert /etc/ssl/client.pem"
+  ELASTICSEARCH_CLIENT_KEY=/etc/ssl/client.pem
 fi
 
 if [ -n "${ELASTICSEARCH_CA_CERTS}" ]; then
@@ -60,7 +61,7 @@ done
 # Check if the Elastalert index exists in Elasticsearch and create it if it does not.
 if ! $($CURL $elasticsearch_url/elastalert_status); then
   echo "Creating Elastalert index in Elasticsearch..."
-  elastalert-create-index --index elastalert_status --old-index ""
+  elastalert-create-index --index elastalert_status --old-index "" || sleep 1000
 else
   echo "Elastalert index already exists in Elasticsearch."
 fi
