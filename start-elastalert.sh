@@ -37,7 +37,7 @@ do
   cat $file | sed "s|es_host: [[:print:]]*|es_host: ${ELASTICSEARCH_HOST}|g" \
     | sed "s|es_port: [[:print:]]*|es_port: ${ELASTICSEARCH_PORT}|g" \
     | sed "s|use_ssl: [[:print:]]*|use_ssl: $use_ssl|g" \
-    | sed "s|verify_ssl: [[:print:]]*|verify_ssl: $verify_ssl|g" \
+    | sed "s|verify_certs: [[:print:]]*|verify_certs: ${ELASTICSEARCH_VERIFY_SSL}|g" \
     | sed "s|ca_certs: [[:print:]]*|ca_certs: ${ELASTICSEARCH_CA_CERTS}|g" \
     | sed "s|client_cert: [[:print:]]*|client_cert: ${ELASTICSEARCH_CLIENT_CERT}|g" \
     | sed "s|client_key: [[:print:]]*|client_key: ${ELASTICSEARCH_CLIENT_KEY}|g" \
