@@ -1,15 +1,16 @@
-name: "HelloWorld-LogEndpoint-Test"
+name: "Errors"
 type: frequency
-index: platform4-*
+index: project*
 num_events: 1
 use_kibana4_dashboard: "/_plugin/kibana/#/dashboard"
 timeframe:
-  hours: 2
+  hours: 1
 filter:
-- query:
-    query_string:
-      query: "kubernetes.container_name: hello-world AND log: '//log called'"
-description: "Hello World logging endpoint called."
-severity: "warning"
-alert: "elastalert_modules.prometheus_alertmanager.PrometheusAlertManagerAlerter"
-alertmanager_url: "http://prometheus:9093/"
+- term:
+    message: "ERROR"
+description: "All error messages."
+severity: "error"
+alert:
+- "email"
+email:
+- "sterburg@redhat.com"

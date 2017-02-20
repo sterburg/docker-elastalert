@@ -1,12 +1,14 @@
 #!/bin/sh
 
 set -e
+set -x
+pwd
 
 : "${ELASTICSEARCH_HOST?Need to set environment variable 'ELASTICSEARCH_HOST'}"
 : "${ELASTICSEARCH_PORT?Need to set environment variable 'ELASTICSEARCH_PORT'}"
 : "${USE_SSL?Need to set environment variable 'USE_SSL'}"
 
-rules_directory=${RULES_FOLDER:-rules}
+rules_directory=${RULES_DIRECTORY:-/rules}
 use_ssl=False
 ELASTICSEARCH_VERIFY_SSL=False
 elasticsearch_url="${ELASTICSEARCH_HOST}:${ELASTICSEARCH_PORT}"
@@ -17,9 +19,9 @@ if [ "${USE_SSL}"=="True" ] || [ "${USE_SSL}"=="true" ]; then
   use_ssl=True
 fi
 
-[ -z "${ELASTICSEARCH_CA_CERTS}" ] && ELASTICSEARCH_CA_CERTS=$(find /var/run/secrets -name admin-ca)
-[ -z "${ELASTICSEARCH_CLIENT_CERT}" ] && ELASTICSEARCH_CLIENT_CERT=$(find /var/run/secrets -name admin-cert)
-[ -z "${ELASTICSEARCH_CLIENT_KEY}" ] && ELASTICSEARCH_CLIENT_KEY=$(find /var/run/secrets -name admin-key)
+[ -z "${ELASTICSEARCH_CA_CERTS}" ] && ELASTICSEARCH_CA_CERTS=$(find /var/run/secrets -name admin-ca |head -n1)
+[ -z "${ELASTICSEARCH_CLIENT_CERT}" ] && ELASTICSEARCH_CLIENT_CERT=$(find /var/run/secrets -name admin-cert |head -n1)
+[ -z "${ELASTICSEARCH_CLIENT_KEY}" ] && ELASTICSEARCH_CLIENT_KEY=$(find /var/run/secrets -name admin-key |head -n1)
 
 if [ -n "${ELASTICSEARCH_CLIENT_CERT}" ]; then
   cat ${ELASTICSEARCH_CLIENT_KEY} ${ELASTICSEARCH_CLIENT_CERT} >/etc/ssl/client.pem
