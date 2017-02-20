@@ -1,4 +1,4 @@
-FROM nordstrom/python:2.7
+FROM quay.io/nordstrom/python:2.7
 
 MAINTAINER Innovation Platform Team "invcldtm@nordstrom.com"
 
