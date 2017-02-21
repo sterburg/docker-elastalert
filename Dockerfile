@@ -53,7 +53,7 @@ COPY start-elastalert.sh          /opt/elastalert/start-elastalert.sh
 
 # Make the start-script executable.
 RUN chmod +x start-elastalert.sh
-RUN chmod -R ugo+rwX ${ELASTALERT_HOME} ${RULES_DIRECTORY} ${ELASTALERT_CONFIG} /etc/ssl
+RUN chmod -R ugo+rwX ${ELASTALERT_HOME} ${RULES_DIRECTORY} ${ELASTALERT_CONFIG} /etc/ssl 
 
 USER ubuntu
 
