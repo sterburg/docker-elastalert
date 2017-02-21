@@ -42,7 +42,7 @@ RUN pip install --upgrade datetime
 RUN python ./setup.py install
 
 # Create rules directories. 
-RUN mkdir -p ${RULES_DIRECTORY} && \
+RUN mkdir -m 0777 -p ${RULES_DIRECTORY} && \
     mkdir -p elastalert/elastalert_modules
 
 COPY ./__init__.py                elastalert/elastalert_modules/__init__.py
@@ -53,7 +53,7 @@ COPY start-elastalert.sh          /opt/elastalert/start-elastalert.sh
 
 # Make the start-script executable.
 RUN chmod +x start-elastalert.sh
-RUN chmod -R a+rwX ${ELASTALERT_HOME} ${RULES_DIRECTORY} ${ELASTALERT_CONFIG} /etc/ssl
+RUN chmod -R ugo+rwX ${ELASTALERT_HOME} ${RULES_DIRECTORY} ${ELASTALERT_CONFIG} /etc/ssl
 
 USER ubuntu
 

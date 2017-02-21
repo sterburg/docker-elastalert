@@ -1,6 +1,6 @@
 name: "Errors"
 type: frequency
-index: "*"
+index: "planapp.22b59a95-a4bc-11e6-005056ab1581.*"
 num_events: 1
 use_kibana4_dashboard: "/_plugin/kibana/#/dashboard"
 timeframe:
