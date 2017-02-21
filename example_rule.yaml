@@ -1,10 +1,10 @@
 name: "Errors"
 type: frequency
-index: project*
+index: "*"
 num_events: 1
 use_kibana4_dashboard: "/_plugin/kibana/#/dashboard"
 timeframe:
-  hours: 1
+  hours: 240
 filter:
 - term:
     message: "ERROR"
