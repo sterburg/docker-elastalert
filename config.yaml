@@ -45,3 +45,4 @@ alert_time_limit:
   days: 2
 
 timestamp_field: time
+smtp_host: smtp.interconnect.nl
