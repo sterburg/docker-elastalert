@@ -1,6 +1,6 @@
 name: "Errors"
 type: any
-index: "planapp.22b59a95-a4bc-11e6-005056ab1581.*"
+index: "*.*"
 num_events: 1
 timeframe:
   hours: 240
